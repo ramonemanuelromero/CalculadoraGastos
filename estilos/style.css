@@ -217,7 +217,10 @@ button {
 /* Table Styling */
 .table-container {
     overflow-x: auto;
+    overflow-y: auto;          /* Permite scroll vertical */
+    max-height: 400px;         /* Limita la altura de la tabla (puedes ajustarlo a tu gusto) */
     margin-top: 1rem;
+    position: relative;        /* Contexto para el sticky */
 }
 
 table {
@@ -234,6 +237,12 @@ th {
     letter-spacing: 0.15em;
     color: var(--text-secondary);
     font-weight: 800;
+    
+    /* ESTO HACE LA MAGIA */
+    position: sticky;
+    top: 0;
+    background-color: #0c152b; /* Un color sólido oscuro (similar a tu fondo) para que no se trasluzcan los datos al escrolear */
+    z-index: 10;               /* Se asegura de quedar por encima de los 'td' */
 }
 
 td {
@@ -355,4 +364,18 @@ td:last-child {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--violet-main);
+}
+
+/************************************************************************************************************************/
+/* Modfificaciones Sabri :) */
+
+/* Ocultar las flechas (spin buttons) de los inputs tipo number */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield; /* Soporte para Firefox */
 }

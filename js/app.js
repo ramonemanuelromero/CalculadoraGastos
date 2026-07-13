@@ -40,7 +40,8 @@ function renderTabla() {
             ${familias.map(f => `
                 <td>
                     <input type="number" min="0" 
-                        value="${item.asignaciones[f]}" 
+                        placeholder="0"
+                        value="${item.asignaciones[f] === 0 ? '' : item.asignaciones[f]}" 
                         onchange="actualizarAsignacion(${index}, '${f}', this.value)">
                 </td>`).join("")}
             <td class="td-number" style="color: ${restante > 0 ? '#facc15' : '#10b981'}">${restante}</td>
