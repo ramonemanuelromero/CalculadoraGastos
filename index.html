@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Familiar</title>
     <link rel="icon" type="image/svg+xml" href="./img/baby-taste_96px_c83c3c.svg">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,61 +15,113 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>Calculadora de gastos</h1>
-
-        <div class="card">
-            <h3>🛒 Agregar Nuevo Ítem</h3>
-            <div class="input-group">
-                <div class="field">
-                    <label for="nombre">Producto</label>
-                    <input id="nombre" placeholder="Ej: Manzanas">
-                </div>
-                <div class="field">
-                    <label for="cantidad">Cantidad</label>
-                    <input id="cantidad" type="number" placeholder="0">
-                </div>
-                <div class="field">
-                    <label for="precio">Precio Unit.</label>
-                    <input id="precio" type="number" placeholder="$0.00">
-                </div>
-                <button class="btn-primary" onclick="agregarItem()">
-                    <span>+</span> Agregar
-                </button>
-                <button class="btn-export" onclick="exportarExcel()">
-                    <span>📊</span> Exportar Excel
-                </button>
+    <div class="dashboard-layout" id="dashboard">
+        
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <button class="btn-toggle-sidebar" onclick="toggleSidebar()">☰</button>
+                <h2 class="brand-text">📊 GastosApp</h2>
             </div>
-        </div>
-
-        <div class="card">
-            <h3>📋 Lista de Compras</h3>
-            <div class="table-container">
-                <table id="tabla">
-                    <thead>
-                        <tr>
-                            <th>Producto</th>
-                            <th>Total</th>
-                            <th>Precio</th>
-                            <th>Enzo</th>
-                            <th>Nora</th>
-                            <th>Rabri</th>
-                            <th>Resto</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+            <nav class="sidebar-menu">
+                <a href="#" class="menu-item active">
+                    <span class="menu-icon">🏠</span>
+                    <span class="menu-text">Inicio</span>
+                </a>
+                <a href="#" class="menu-item" onclick="exportarExcel()">
+                    <span class="menu-icon">📊</span>
+                    <span class="menu-text">Exportar<br>Excel</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <small class="footer-text">v1.2.0</small>
             </div>
-        </div>
+        </aside>
 
-        <div class="card">
-            <h3>💰 Resumen de Gastos</h3>
-            <div id="totales" class="totales-grid">
+        <main class="main-content">
+            <header class="main-header">
+                <button class="btn-open-sidebar" id="btnOpenSidebar" onclick="toggleSidebar()">☰</button>
+                <h1>Calculadora de gastos</h1>
+            </header>
+            
+            <div class="cards-grid">
+                
+                <div class="card">
+                    <details>
+                        <summary><h3>👥 Administrar Familiares</h3></summary>
+                        <div class="details-content">
+                            <div class="input-group">
+                                <div class="field">
+                                    <label for="nuevo-familiar">Nombre del Familiar</label>
+                                    <input id="nuevo-familiar" placeholder="Ej: Juan">
+                                </div>
+                                <button class="btn-primary" onclick="agregarFamiliar()">
+                                    <span>+</span> Añadir
+                                </button>
+                            </div>
+                            <div id="lista-familiares" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;"></div>
+                        </div>
+                    </details>
                 </div>
-        </div>
-    </div>
 
+                <div class="card">
+                    <details open>
+                        <summary><h3>🛒 Agregar Nuevo Ítem</h3></summary>
+                        <div class="details-content">
+                            <div class="input-group">
+                                <div class="field">
+                                    <label for="nombre">Producto</label>
+                                    <input id="nombre" placeholder="Ej: Manzanas">
+                                </div>
+                                <div class="field">
+                                    <label for="cantidad">Cantidad</label>
+                                    <input id="cantidad" type="number" placeholder="0">
+                                </div>
+                                <div class="field">
+                                    <label for="precio">Precio Unit.</label>
+                                    <input id="precio" type="number" placeholder="$0.00">
+                                </div>
+                                <button class="btn-primary" onclick="agregarItem()">
+                                    <span>+</span> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="card">
+                    <details open>
+                        <summary><h3>📋 Lista de Compras</h3></summary>
+                        <div class="details-content">
+                            <div class="table-container">
+                                <table id="tabla">
+                                    <thead>
+                                        <tr>
+                                            <th>Producto</th>
+                                            <th>Total</th>
+                                            <th>Precio</th>
+                                            <th>Resto</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="card">
+                    <details open>
+                        <summary><h3>💰 Resumen de Gastos</h3></summary>
+                        <div class="details-content">
+                            <div id="totales" class="totales-grid"></div>
+                        </div>
+                    </details>
+                </div>
+
+            </div> 
+        </main> 
+    </div> 
     <script src="./js/app.js"></script>
 </body>
 
