@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Familiar</title>
-    <link rel="icon" type="image/svg+xml" href="./img/baby-taste_96px_c83c3c.svg">
+    <link rel="icon" type="image/ico" href="./logoFavicon.ico">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,12 +15,24 @@
 </head>
 
 <body>
+    <div id="splash-screen">
+        <div class="splash-content">
+            <img src="./img/logChico.png" class="splash-logo" alt="Prorrata Logo">
+            
+            <h1 class="splash-title">Prorrata</h1>
+            <p class="splash-subtitle">Cuentas claras, hogar feliz</p>
+        </div>
+    </div>
+    
     <div class="dashboard-layout" id="dashboard">
         
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-brand">
                 <button class="btn-toggle-sidebar" onclick="toggleSidebar()">☰</button>
-                <h2 class="brand-text">📊 GastosApp</h2>
+                <h2 class="brand-text">
+                    <img src="./img/logChico.png" alt="Prorrata Logo" class="brand-logo">
+                    <span>Prorrata</span>
+                </h2>
             </div>
             <nav class="sidebar-menu">
                 <a href="#" class="menu-item active">
@@ -33,7 +45,7 @@
                 </a>
             </nav>
             <div class="sidebar-footer">
-                <small class="footer-text">v1.2.0</small>
+                <small class="footer-text">v1.2.1</small>
             </div>
         </aside>
 

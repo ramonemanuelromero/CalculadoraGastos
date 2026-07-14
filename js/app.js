@@ -278,3 +278,20 @@ function toggleSidebar() {
         }
     }, 50);
 })();
+
+// --- ANIMACIÓN DE ENTRADA (SPLASH SCREEN) ---
+window.addEventListener("load", () => {
+    const splash = document.getElementById("splash-screen");
+    if (splash) {
+        // Mantiene la pantalla de carga durante 1.5 segundos para mostrar la animación
+        setTimeout(() => {
+            splash.classList.add("hidden");
+            
+            // Remueve el nodo del HTML después de terminar la transición de CSS (0.6s)
+            // Esto optimiza el rendimiento y libera memoria del navegador
+            setTimeout(() => {
+                splash.remove();
+            }, 600);
+        }, 1500);
+    }
+});
